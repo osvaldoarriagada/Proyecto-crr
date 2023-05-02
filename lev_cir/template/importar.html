@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Importar Datos</h1>
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+  <form method="POST" enctype="multipart/form-data" action="{% url 'importar-datos' %}">
+    {% csrf_token %}
+    <input type="file" name="archivo" required>
+    <button type="submit" class="btn btn-primary">Importar</button>
+  </form>
+{% endblock %}
